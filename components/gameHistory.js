@@ -71,10 +71,10 @@ export default function GameHistory({ session, onGameClick }) {
     const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
     const diffMinutes = Math.floor(diffMs / (1000 * 60));
 
-    if (diffMinutes < 1) return text('justNow');
-    if (diffMinutes < 60) return text('minutesAgo', { minutes: diffMinutes });
-    if (diffHours < 24) return text('hoursAgo', { hours: diffHours });
-    if (diffDays < 7) return text('daysAgo', { days: diffDays });
+    if (diffMinutes < 1) return text('Segundos');
+    if (diffMinutes < 60) return text('Minutos', { minutes: diffMinutes });
+    if (diffHours < 24) return text('Horas', { hours: diffHours });
+    if (diffDays < 7) return text('Dias', { days: diffDays });
 
     return date.toLocaleDateString();
   };
@@ -115,9 +115,9 @@ export default function GameHistory({ session, onGameClick }) {
   return (
     <div className={styles.gameHistory}>
       <div className={styles.gameHistoryHeader}>
-        <h3>{text('gameHistory')}</h3>
+        <h3>{text('Geral:')}</h3>
         <span className={styles.totalGames}>
-          {text('totalGames', { count: pagination.totalGames })}
+          {text('Games Total', { count: pagination.totalGames })}
         </span>
       </div>
 
@@ -172,7 +172,7 @@ export default function GameHistory({ session, onGameClick }) {
                       </span>
                     </div>
                     <div className={styles.statItem}>
-                      <span className={styles.statLabel}>{text('duration')}</span>
+                      <span className={styles.statLabel}>{text('Duração')}</span>
                       <span className={styles.statValue}>
                         {formatTime(game.totalDuration)}
                       </span>
@@ -180,7 +180,7 @@ export default function GameHistory({ session, onGameClick }) {
                   </>
                 ) : (
                   <div className={styles.statItem}>
-                    <span className={styles.statLabel}>{text('points')}</span>
+                    <span className={styles.statLabel}>{text('Pontos')}</span>
                     <span className={styles.statValue}>
                       {game.userStats.totalPoints.toLocaleString()}
                       <span className={styles.statPercentage}>

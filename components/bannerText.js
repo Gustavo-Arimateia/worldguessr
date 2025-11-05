@@ -16,7 +16,7 @@ export default function BannerText({shown, text, hideCompass, subText, position}
     >
       <div style={{ display: "flex"}}>
         <span style={{color: 'white', fontSize: '50px', marginTop: '20px', textAlign: 'center'}}>
-          {text || 'Loading...'}
+          {text || 'Carregando...'}
         </span>
         { !hideCompass && (
           <NextImage.default alt="Loading compass" src={'./loader.gif'} width={100} height={100} />

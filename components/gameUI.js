@@ -627,11 +627,11 @@ session={session}/>
 
         <div className={`miniMap__btns ${showAnswer ? 'answerShownBtns' : ''}`}>
           <button className={`miniMap__btn ${!pinPoint||(multiplayerState?.inGame && multiplayerState?.gameData?.players.find(p => p.id === multiplayerState?.gameData?.myId)?.final) ? 'unavailable' : ''} guessBtn`} disabled={!pinPoint||(multiplayerState?.inGame && multiplayerState?.gameData?.players.find(p => p.id === multiplayerState?.gameData?.myId)?.final)} onClick={guess}>
-           {multiplayerState?.inGame && multiplayerState?.gameData?.players.find(p => p.id === multiplayerState?.gameData?.myId)?.final ? multiplayerState?.gameData?.players?.reduce((acc, cur) => {if(cur.final) return acc - 1;return acc;}, multiplayerState?.gameData?.players.length) > 0 ? `${text("waitingForPlayers", {p:multiplayerState?.gameData?.players?.reduce((acc, cur) => {if(cur.final) return acc - 1;return acc;}, multiplayerState?.gameData?.players.length)})}...` : `${text("waiting")}...` : text("guess")}
+           {multiplayerState?.inGame && multiplayerState?.gameData?.players.find(p => p.id === multiplayerState?.gameData?.myId)?.final ? multiplayerState?.gameData?.players?.reduce((acc, cur) => {if(cur.final) return acc - 1;return acc;}, multiplayerState?.gameData?.players.length) > 0 ? `${text("waitingForPlayers", {p:multiplayerState?.gameData?.players?.reduce((acc, cur) => {if(cur.final) return acc - 1;return acc;}, multiplayerState?.gameData?.players.length)})}...` : `${text("waiting")}...` : text("Escolher")}
             </button>
 
           { !multiplayerState?.inGame && (
-          <button className={`miniMap__btn hintBtn ${hintShown ? 'hintShown' : ''}`} onClick={showHint}>{text('hint')}</button>
+          <button className={`miniMap__btn hintBtn ${hintShown ? 'hintShown' : ''}`} onClick={showHint}>{text('Dica')}</button>
           )}
         </div>
       </div>
@@ -642,11 +642,11 @@ session={session}/>
             {/* guess and hint  */}
 
             <button className={`miniMap__btn ${!pinPoint||(multiplayerState?.inGame && multiplayerState?.gameData?.players.find(p => p.id === multiplayerState?.gameData?.myId)?.final) ? 'unavailable' : ''} guessBtn`} disabled={!pinPoint||(multiplayerState?.inGame && multiplayerState?.gameData?.players.find(p => p.id === multiplayerState?.gameData?.myId)?.final)} onClick={guess}>
-           {multiplayerState?.inGame && multiplayerState?.gameData?.players.find(p => p.id === multiplayerState?.gameData?.myId)?.final ? multiplayerState?.gameData?.players?.reduce((acc, cur) => {if(cur.final) return acc - 1;return acc;}, multiplayerState?.gameData?.players.length) > 0 ? `${text("waitingForPlayers", {p: multiplayerState?.gameData?.players?.reduce((acc, cur) => {if(cur.final) return acc - 1;return acc;}, multiplayerState?.gameData?.players.length)})}...` :  `${text("waiting")}...` : text("guess")}
+           {multiplayerState?.inGame && multiplayerState?.gameData?.players.find(p => p.id === multiplayerState?.gameData?.myId)?.final ? multiplayerState?.gameData?.players?.reduce((acc, cur) => {if(cur.final) return acc - 1;return acc;}, multiplayerState?.gameData?.players.length) > 0 ? `${text("waitingForPlayers", {p: multiplayerState?.gameData?.players?.reduce((acc, cur) => {if(cur.final) return acc - 1;return acc;}, multiplayerState?.gameData?.players.length)})}...` :  `${text("waiting")}...` : text("Escolher")}
             </button>
 
           { !multiplayerState?.inGame && (
-          <button className={`miniMap__btn hintBtn ${hintShown ? 'hintShown' : ''}`} onClick={showHint}>{text('hint')}</button>
+          <button className={`miniMap__btn hintBtn ${hintShown ? 'hintShown' : ''}`} onClick={showHint}>{text('Dica')}</button>
           )}
           </>
         )}
@@ -706,19 +706,19 @@ text("round", {r:multiplayerState?.gameData?.curRound, mr: multiplayerState?.gam
       text("roundTimer", {r:multiplayerState?.gameData?.curRound, mr: multiplayerState?.gameData?.rounds, t: timeToNextMultiplayerEvt.toFixed(1)})}
         </span>
 
-        <span className={`timer ${!onboardingTimerShown ? '' : 'shown'} ${timeToNextRound <= 5 && timeToNextRound > 0 && !showAnswer && !pinPoint && onboarding ? 'critical' : ''}`}>
+        <span className={`Tempo ${!onboardingTimerShown ? '' : 'shown'} ${timeToNextRound <= 5 && timeToNextRound > 0 && !showAnswer && !pinPoint && onboarding ? 'critical' : ''}`}>
 
 {/* Round #{multiplayerState?.gameData?.curRound} / {multiplayerState?.gameData?.rounds} - {timeToNextMultiplayerEvt}s */}
       {timeToNextRound ?
-      text("roundTimer", {r:onboarding?.round, mr: 5, t: timeToNextRound.toFixed(1)})
-      : text("round", {r:onboarding?.round, mr: 5})} - <AnimatedCounter value={onboarding?.points || 0} showIncrement={false} /> {text("points")}
+      text("Tempo do Round", {r:onboarding?.round, mr: 5, t: timeToNextRound.toFixed(1)})
+      : text("Round", {r:onboarding?.round, mr: 5})} - <AnimatedCounter value={onboarding?.points || 0} showIncrement={false} /> {text("points")}
 
         </span>
 
         {
           singlePlayerRound && !singlePlayerRound?.done && (
             <span className="timer shown">
-              {text("round", {r: singlePlayerRound.round, mr: singlePlayerRound.totalRounds})} - <AnimatedCounter value={singlePlayerRound.locations.reduce((acc, cur) => acc + cur.points, 0)} showIncrement={false} /> {text("points")}
+              {text("Rounds", {r: singlePlayerRound.round, mr: singlePlayerRound.totalRounds})} - <AnimatedCounter value={singlePlayerRound.locations.reduce((acc, cur) => acc + cur.points, 0)} showIncrement={false} /> {text("Pontos")}
 
             </span>
           )
@@ -747,9 +747,9 @@ text("round", {r:multiplayerState?.gameData?.curRound, mr: multiplayerState?.gam
             multiplayerState={multiplayerState}
             points={multiplayerState?.gameData?.players?.find(p => p.id === multiplayerState?.gameData?.myId)?.score || 0}
             maxPoints={multiplayerState?.gameData?.rounds * 5000}
-            button1Text={multiplayerState?.gameData?.public ? text("playAgain") : null}
+            button1Text={multiplayerState?.gameData?.public ? text("Jogar Novamente") : null}
             button1Press={multiplayerState?.gameData?.public ? () => backBtnPressed(true, "unranked") : null}
-            button2Text={(multiplayerState?.gameData?.public || multiplayerState?.gameData?.host) ? text("back") : null}
+            button2Text={(multiplayerState?.gameData?.public || multiplayerState?.gameData?.host) ? text("Voltar") : null}
             button2Press={(multiplayerState?.gameData?.public || multiplayerState?.gameData?.host) ? () => backBtnPressed() : null}
             session={session}
             options={options}
@@ -763,9 +763,9 @@ text("round", {r:multiplayerState?.gameData?.curRound, mr: multiplayerState?.gam
             duel={true}
             data={multiplayerState?.gameData?.duelEnd}
             multiplayerState={multiplayerState}
-            button1Text={multiplayerState?.gameData?.public ? text("playAgain") : null}
+            button1Text={multiplayerState?.gameData?.public ? text("Jogar Novamente") : null}
             button1Press={multiplayerState?.gameData?.public ? () => backBtnPressed(true, "ranked") : null}
-            button2Text={(multiplayerState?.gameData?.public || multiplayerState?.gameData?.host) ? text("back") : null}
+            button2Text={(multiplayerState?.gameData?.public || multiplayerState?.gameData?.host) ? text("Voltar") : null}
             button2Press={(multiplayerState?.gameData?.public || multiplayerState?.gameData?.host) ? () => backBtnPressed() : null}
             session={session}
             options={options}
@@ -796,7 +796,7 @@ singlePlayerRound={singlePlayerRound} onboarding={onboarding} countryGuesser={co
   }} panoShown={showPanoOnResult} />
 
     {/* Critical timer screen warning effect */}
-    {((timeToNextMultiplayerEvt <= 5 && timeToNextMultiplayerEvt > 0 && multiplayerTimerShown && !showAnswer && !pinPoint && multiplayerState?.inGame && multiplayerState?.gameData?.state === 'guess') ||
+    {((timeToNextMultiplayerEvt <= 5 && timeToNextMultiplayerEvt > 0 && multiplayerTimerShown && !showAnswer && !pinPoint && multiplayerState?.inGame && multiplayerState?.gameData?.state === 'Escolher') ||
       (timeToNextRound <= 5 && timeToNextRound > 0 && onboardingTimerShown && !showAnswer && !pinPoint && onboarding)) && (
       <div className="screen-critical-warning" />
     )}
